@@ -18,112 +18,99 @@ def readFile():
         lines = [line.rstrip() for line in file]
     
 
-def showOptions(loginType):
-    while True:
-        print("Enter the number of the option you want to proceed with")
-        if loginType == 'a':
-            print("1. Withdrawl\n2. Transfer\n3. Paybill\n4. Deposit\n5. Create Account\n6. Delete Account\n7. Disable Account\n8. Changeplan\n9. Logout")
-            choice = input()
-            try:
-                choiceInt = int(choice)
-                if choiceInt >= 1 and choiceInt <= 9:
-                    return choice
-                else:
-                    errorMessage("Please enter a valid choice number")
-            except ValueError:
-                errorMessage("Please enter a number")
-        else:
-            print("1. Withdrawl\n2. Transfer\n3. Paybill\n4. Deposit\n5. Logout")
-            choice = input()
-            try:
-                choiceInt = int(choice)
-                if choiceInt >= 1 and choiceInt <= 5:
-                    return choice
-                else:
-                    errorMessage("Please enter a valid choice number")
-            except ValueError:
-                errorMessage("Please enter a number")
-
 def errorMessage(message):
     print(bcolors.FAIL + message + bcolors.ENDC)
 
-def withdrawl():
-    if loginType == 'a':
-        print("Please enter the account number you want to withdraw from:\n")
-        accountNumber = input()
-        print("Please enter the amount you want to withdraw:\n")
-        amount = input()
-    else:
-        return
+def title(text):
+    print(bcolors.BOLD + bcolors.OKBLUE + "\n" + text + bcolors.ENDC)
+
+def withdrawl(loginType):
+    if loginType == 'admin':
+        accountNumber = input("Please enter the account number you want to withdraw from:\n")
+    amount = input("Please enter the amount you want to withdraw:\n")
+    print("You withdrew $" + amount)
+    return 
         
-def transfer():
-    print("transfer")
-    if loginType == 'a':
-        print("Please enter the account holder's name:\n")
-        accountHolderName = input()
-    print("Please enter the account number you want to transfer from:\n")
-    accountNumberFrom = input()
-    print("Please enter the account number you want to transfer to:\n")
-    accountNumberTo = input()
-    print("Please enter the amount you want to transfer:\n")
-    amount = input()
+def transfer(loginType):
+    # placeholder for account holder name, if admin is logged in, they can specify 
+    # the account holder name, otherwise it will be set to "standard user"
+    accountHolderName = "standard user"
+    if loginType == 'admin':
+        accountHolderName = input("Please enter the account holder's name:\n")
+    accountNumberFrom = input("Please enter the account number you want to transfer from:\n")
+    accountNumberTo = input("Please enter the account number you want to transfer to:\n")
+    amount = input("Please enter the amount you want to transfer:\n")
     # dislpay transfer details
     print("You are transferring $" + amount + " from " + accountHolderName+ "'s account " + accountNumberFrom + " to account " + accountNumberTo + "\n")
    
-    return
+    return 
 
-def paybill():
-    if loginType == 'a':
-        print
-        print("Please enter the account number you want to pay from:\n")
-        accountNumberFrom = input()
-        print("Please enter the amount you want to pay:\n")
-        amount = input()
-        print("Please enter the biller name:\n" +
+def paybill(loginType):
+    if loginType == 'admin':
+        accountHolderName = input("Please enter the account holder's name:\n")
+        accountNumberFrom = input("Please enter the account number you want to pay from:\n")
+        amount = input("Please enter the amount you want to pay:\n")
+        billerName = input(
+            "Please enter the biller name:\n" +
             "Enter the two letter code for the biller you want to pay: \n" 
             "The Bright Light Electric Company (EC), Credit Card Company Q (CQ) or Fast Internet, Inc. (FI)\n")
-        billerName = input()
 
-        print("You are paying $" + amount + " from account " + accountNumberFrom + " to biller " + billerName + "\n")
+        print("You are paying $" + amount + "from " + accountHolderName + "'s acount " +" from account " + accountNumberFrom + " to biller " + billerName + "\n")
     else:
-        print("Please enter the account number you want to pay from:\n")
-        accountNumberFrom = input()
-        print("Please enter the amount you want to pay:(max = $2000.00)\n")
-        amount = input()
-        print("Please enter the biller name:\n" +
+        accountNumberFrom = input("Please enter the account number you want to pay from:\n")
+        amount = input("Please enter the amount you want to pay:(max = $2000.00)\n")
+        billerName = input("Please enter the biller name:\n" +
             "Enter the two letter code for the biller you want to pay: \n" 
             "The Bright Light Electric Company (EC), Credit Card Company Q (CQ) or Fast Internet, Inc. (FI)\n")
-        billerName = input()
 
         print("You are paying $" + amount + " from account " + accountNumberFrom + " to biller " + billerName + "\n")
-    return
 
-def deposit():
-    if loginType == 'a':
-        print("Please enter the account name you want to deposit to:\n")
-        accountNameTo = input()
-        print("Please enter the account number you want to deposit to:\n")
-        accountNumberTo = input()
-        print("Please enter the amount you want to deposit:\n")
-        amount = input()
+    return 
+
+def deposit(loginType):
+    accountNameTo = "standard user"
+    if loginType == 'admin':
+        accountNameTo = input("Please enter the account name you want to deposit to:\n")
+        accountNumberTo = input("Please enter the account number you want to deposit to:\n")
+        amount = input("Please enter the amount you want to deposit:\n")
     else:
-        print("Please enter the account number you want to deposit to:\n")
-        accountNumberTo = input()
-        print("Please enter the amount you want to deposit:\n")
-        amount = input()
+        accountNumberTo = input("Please enter the account number you want to deposit to:\n")
+        amount = input("Please enter the amount you want to deposit:\n")
+    print("You are depositing $" + amount + " to " + accountNameTo + "'s account " + accountNumberTo + "\n")
+
+    return 
+
+def createAccount(loginType):
+    accountHolderName = input("Please enter the account holder's name:\n" + 
+          "Max name length is 20 characters\n")
+    accountNumber = input("Please enter the account number you want to create:\n")
+
+    initialBalance = input("Please enter the initial balance of the account:\n" + 
+          "Max initial balance is $99,999.99\n")
+
+    print("You are creating an account for " + accountHolderName + " with account number " + accountNumber + " and initial balance $" + initialBalance + "\n")
     return
 
-def createAccount():
+def deleteAccount(loginType):
+    accountHolderName = input("Please enter the account holder's name:\n") 
+    accountNumber = input("Please enter the account number you want to delete:\n")
+    print("You have deleted " + accountHolderName + "'s account with account number " + accountNumber + "\n")
+    return 
+
+def disableAccount(loginType):
+    accountHolderName = input("Please enter the account holder's name:\n") 
+    accountNumber = input("Please enter the account number you want to disable:\n")
+    print("You haved disabled " + accountHolderName + "'s account with account number " + accountNumber + "\n")
+    return 
+
+def changeplan(loginType):
+    accountHolderName = input("Please enter the account holder's name:\n") 
+    accountNumber = input("Please enter the account number you want to disable:\n")
+    print("You haved changed " + accountHolderName + "'s account (" + accountNumber + ") to a non-student plan\n")
     return
 
-def deleteAccount():
-    return
-
-def disableAccount():
-    return
-
-def changeplan():
-    return
+def logout():
+    print("Logging out...\n")
 
 def title(text):
     print(bcolors.BOLD + bcolors.OKBLUE + "\n" + text + bcolors.ENDC)
@@ -141,63 +128,68 @@ def findAccountName():
     
     # errorMessage("Account name not found")
 
-def goToTranscation(number):
-    if number == '1':
-        title('WITHDRAWL')
-        withdrawl()
-    elif number == '2':
-        title('TRANSFEER')
-        transfer()
-    elif number == '3':
-        title('PAYBILL')
-        paybill()
-    elif number == '4':
-        title('DEPOSIT')
-        deposit()
-    elif number == '5':
-        title('CREATE ACCOUNT')
-        createAccount()
-    elif number == '6':
-        title('DELETE ACCOUNT')
-        deleteAccount()
-    elif number == '7':
-        title('DISABLE ACCOUNT')
-        disableAccount()
-    else:
-        title('CHANGE PLAN')
-        changeplan()
 
-loggedIn = True
+menu = {
+    1: ("Withdrawl", withdrawl),
+    2: ("Transfer", transfer),
+    3: ("Paybill", paybill),
+    4: ("Deposit", deposit),
+    5: ("Create Account", createAccount),
+    6: ("Delete Account", deleteAccount),
+    7: ("Disable Account", disableAccount),
+    8: ("Changeplan", changeplan),
+    9: ("Logout", logout)
+}
 
-while loggedIn:
-    readFile()
-    print("Welcome to the banking system.")
-    print("For Standard Users, type 'S'.")
-    print("For Admin Users, type 'A'")
-    print("Please enter your login type:")
-    loginType = input().lower()
 
-    if loginType == 'a':
-        print("You selected: 'Admin'")
-        while True:
-            mainChoice = showOptions(loginType)
-            if mainChoice == '9':
-                title("LOGGED OUT")
-                loggedIn = False
-                break
+#  Main menu loop
+def main(session_type):
+    logged_out = False
+    while not logged_out:
+        display_map = {}
+        display_num = 1
+
+        print("\nEnter the number of the option you want to proceed with")
+        if session_type == "standard":
+            allowed_options = {1, 2, 3, 4, 9}
+            for num, data in menu.items():
+                name = data[0]
+                if num in allowed_options:
+                    display_map[display_num] = num
+                    print(f"{display_num}. {name}")
+                    display_num += 1
+        elif session_type == "admin":
+            for num, data in menu.items():
+                name = data[0]
+                display_map[display_num] = num
+                print(f"{display_num}. {name}")
+                display_num += 1
+        else:
+            errorMessage("Invalid session type.")
+
+        try:
+            choice = int(input("\nYour choice: "))
+            if choice in display_map:
+                actual_option = display_map[choice]
+                title((menu[actual_option][0]).upper())
+                if actual_option == 9:
+                    logged_out = True
+                    logout()
+                else:
+                    menu[actual_option][1](session_type)
             else:
-                goToTranscation(mainChoice)
+                errorMessage("Invalid option.")
+        except ValueError:
+            print("Please enter a number.")
 
-    elif loginType == 's':
-        print("You selected: 'Standard'")
-        name = findAccountName()
-        while True:
-            mainChoice = showOptions(loginType)
-            if mainChoice == '5': 
-                title("LOGGED OUT")
-                loggedIn = False
-                break
-            else:
-                goToTranscation(mainChoice)
+
+while True:
+    session_type = input("Enter session type (admin / standard) or 'quit' to end program: ").strip().lower()
+    if session_type in ["admin", "standard"]:
+        # call main menu loop with the valid session type
+        main(session_type)
+    elif session_type == "quit":
+        print("Exiting program.")
+        break
     else:
-        errorMessage("Please enter a valid login type")
+        errorMessage("Invalid session type.")
