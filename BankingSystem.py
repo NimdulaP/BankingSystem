@@ -115,18 +115,28 @@ def logout():
 def title(text):
     print(bcolors.BOLD + bcolors.OKBLUE + "\n" + text + bcolors.ENDC)
 
+def findAccountName(name):
+    username = name.replace(" ", "")
+    try:
+        with open("accounts.txt", "r") as file:
+            for line in file:
+                line = line.strip()
 
-def findAccountName():
-    print("Please enter account name:")
-    name = input()
-    # with open('accounts.txt') as file:
-    #     lines = [line.rstrip() for line in file]
-    #     for line in lines:
-    #         if name in line:
-    #             print("Found name " + name)
-    #             return name
-    
-    # errorMessage("Account name not found")
+                if not line:
+                    continue
+
+                parts = line.split("_")
+                name_section = "_".join(parts[1:-2])
+                actual_name = name_section.rstrip("_")
+
+                if actual_name.lower() == username.lower():
+                    return True
+
+        return False
+
+    except FileNotFoundError:
+        print("accounts.txt not found.")
+        return False
 
 
 menu = {
@@ -143,12 +153,14 @@ menu = {
 
 
 #  Main menu loop
-def main(session_type):
+def main(session_type, name=None):
     logged_out = False
     while not logged_out:
+        if name is not None:
+            print("Logged In: " + bcolors.OKGREEN + name + bcolors.ENDC)
+
         display_map = {}
         display_num = 1
-
         print("\nEnter the number of the option you want to proceed with")
         if session_type == "standard":
             allowed_options = {1, 2, 3, 4, 9}
@@ -184,10 +196,21 @@ def main(session_type):
 
 
 while True:
+    title("Welcome to the Banking System")
     session_type = input("Enter session type (admin / standard) or 'quit' to end program: ").strip().lower()
-    if session_type in ["admin", "standard"]:
-        # call main menu loop with the valid session type
+    if session_type == "admin":
         main(session_type)
+    elif session_type == "standard":
+        name = input("Please enter your name with no spaces (ex: JohnDoe)\nor 'back' to return to main menu:\n")
+        while True:
+            if name.lower() == "back":
+                break
+            if findAccountName(name) is False:
+                errorMessage("Account name not found. Please try again.\n")
+                name = input("Please enter your name with no spaces (ex: JohnDoe)\nor 'back' to return to main menu:\n")
+            else:
+                main(session_type, name)
+                break
     elif session_type == "quit":
         print("Exiting program.")
         break
