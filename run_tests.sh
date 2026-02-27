@@ -14,17 +14,21 @@ fi
 
 counter=$((last_num + 1))
 
-for file in inputs/*.txt
-do
-    name=$(basename "$file" .txt)
+# Remove all existing files in outputs directory before running tests
+rm -f outputs/*
 
-    echo "Running test $name"
+for file in inputs/in*.txt
+do
+    base=$(basename "$file" .txt)   # e.g. in01
+    number=${base:2}                # remove first 2 chars → 01
+    name="op${number}"              # → op01
+
+    echo "Running test $base"
 
     grep -v '^#' "$file" | python3 main.py currentaccounts.txt \
-        > "outputs/$name.txt"
+> "outputs/${name}.txt"
 
     # Move the newly created daily_transactions file
-    mv "$dir/daily_transactions_${counter}.txt" "outputs/$name.atf"
-
-    counter=$((counter + 1))
+    mv "$dir/daily_transactions_${counter}.txt" \
+       "outputs/${name}.atf"
 done

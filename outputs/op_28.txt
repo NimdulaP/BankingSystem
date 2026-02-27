@@ -1,6 +1,4 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: 
 Enter the number of the option you want to proceed with
 1. Withdrawal
@@ -13,10 +11,10 @@ Enter the number of the option you want to proceed with
 8. Changeplan
 9. Logout
 
-Your choice: DELETE ACCOUNT
+Your choice: CHANGEPLAN
 Please enter the account holder's name:
-Please enter the account number you want to delete:
-You have deleted john doe's account 1
+Please enter the account number:
+You changed john doe's account 1 plan
 
 
 Enter the number of the option you want to proceed with

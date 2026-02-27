@@ -50,6 +50,7 @@ class Transactions:
 
     # File handling functions
     def create_new_session_file(self, base_filename):
+        os.makedirs("daily_transactions", exist_ok=True)
         i = 1
         filename = os.path.join("daily_transactions", f"{base_filename}{i}.txt")
 

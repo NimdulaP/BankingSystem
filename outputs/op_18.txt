@@ -1,20 +1,18 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: 
+Enter session type (admin / standard) or 'quit' to end program: Please enter your name or 'back' to return to main menu:
+Logged In: john doe
+
 Enter the number of the option you want to proceed with
 1. Withdrawal
 2. Transfer
 3. Paybill
 4. Deposit
-5. Create Account
-6. Delete Account
-7. Disable Account
-8. Changeplan
-9. Logout
+5. Logout
 
 Your choice: LOGOUT
 Logging out...
 
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
 Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: Exiting program.

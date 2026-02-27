@@ -1,7 +1,19 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: Please enter your name or 'back' to return to main menu:
+Logged In: john doe
+
+Enter the number of the option you want to proceed with
+1. Withdrawal
+2. Transfer
+3. Paybill
+4. Deposit
+5. Logout
+
+Your choice: WITHDRAWAL
+Please enter the account number you want to withdraw from:
+Please enter the amount you want to withdraw:
+You withdrew $50 from john doe's account 1
+
 Logged In: john doe
 
 Enter the number of the option you want to proceed with

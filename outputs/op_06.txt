@@ -1,6 +1,4 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: 
 Enter the number of the option you want to proceed with
 1. Withdrawal
@@ -13,10 +11,11 @@ Enter the number of the option you want to proceed with
 8. Changeplan
 9. Logout
 
-Your choice: DISABLE ACCOUNT
-Please enter the account holder's name:
-Please enter the account number you want to disable:
-You have disabled john doe's account 1
+Your choice: WITHDRAWAL
+Please enter the account name you want to withdraw from:
+Please enter the account number you want to withdraw from:
+Please enter the amount you want to withdraw:
+You withdrew $50 from john doe's account 1
 
 
 Enter the number of the option you want to proceed with

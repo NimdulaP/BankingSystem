@@ -1,6 +1,4 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: 
 Enter the number of the option you want to proceed with
 1. Withdrawal

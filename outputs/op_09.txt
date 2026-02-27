@@ -1,6 +1,4 @@
 Welcome to the Banking System
-Enter session type (admin / standard) or 'quit' to end program: Invalid session type.
-Welcome to the Banking System
 Enter session type (admin / standard) or 'quit' to end program: 
 Enter the number of the option you want to proceed with
 1. Withdrawal
@@ -13,10 +11,12 @@ Enter the number of the option you want to proceed with
 8. Changeplan
 9. Logout
 
-Your choice: CHANGEPLAN
+Your choice: TRANSFER
 Please enter the account holder's name:
-Please enter the account number:
-You changed john doe's account 1 plan
+Please enter the account number you want to transfer from:
+Please enter the account number you want to transfer to:
+Please enter the amount you want to transfer:
+You are transferring $50 from john doe's account 1 to account 2
 
 
 Enter the number of the option you want to proceed with

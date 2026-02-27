@@ -1,28 +1,27 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Create output folder if it doesn't exist
-if not exist output mkdir output
+REM Create outputs folder if it doesn't exist
+if not exist outputs mkdir outputs
 
 REM Loop through each input file
-for %%f in (inputs\*.txt) do (
+for %%f in (inputs\in*.txt) do (
 
     echo Running test with %%f
+
+    REM Extract the number part 
+    set name=%%~nf
+    set number=!name:~2!
 
     REM Clear old transaction files
     if exist daily_transactions rmdir /s /q daily_transactions
     mkdir daily_transactions
 
-    REM Run program with redirected input and save terminal log
-    python main.py < %%f > output\%%~nf_terminal.txt
+    REM Run program and save terminal outputs
+    python main.py < %%f > outputs\op!number!.txt
 
-    REM Copy transaction file to output folder
+    REM Copy generated transaction file
     for %%t in (daily_transactions\*.txt) do (
-        copy %%t output\%%~nf_transactions.txt > nul
+        copy %%t outputs\op!number!.atf > nul
     )
-
-    echo Finished %%f
 )
-
-echo All tests complete.
-pause
