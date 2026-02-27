@@ -9,7 +9,7 @@ for %%f in (inputs\in*.txt) do (
 
     echo Running test with %%f
 
-    REM Extract the number part 
+    REM Extract the number 
     set name=%%~nf
     set number=!name:~2!
 

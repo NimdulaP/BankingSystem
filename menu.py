@@ -1,6 +1,5 @@
 # Importing classes and functions
 from transactions import Transactions
-# from utils import errorMessage, title, bcolors
 
 # Menu class to list options and run transactions
 class Menu:
@@ -20,8 +19,9 @@ class Menu:
         }
 
     def logout(self):
+        # Logging out function 
         print("Logging out...\n")
-        self.operations.write_transaction(0)   # END OF SESSION
+        self.operations.write_transaction(0)
 
     # Display and run transactions function
     def run(self, loginType, name=None):

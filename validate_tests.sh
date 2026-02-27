@@ -1,47 +1,63 @@
 #!/bin/bash
 
-expected_dir="expected_outputs"
-output_dir="outputs"
+# Directory paths
+expectedDir="expected_outputs"
+outputDir="outputs"
 
-total_tests=0
-passed_tests=0
+# Initialize counters
+totalTests=0
+passedTests=0
 
-for file in $expected_dir/ex_*.txt
+# Loop through expected output files
+for file in $expectedDir/ex_*.txt
 do
+    # Extracting file name and number
     base=$(basename "$file" .txt) 
     number=${base#ex_} 
 
+    # Display test number
     echo "TEST #$number"
-    ((total_tests++))
+    ((totalTests++))
 
-    txt_pass=true
-    if diff "$output_dir/op_${number}.txt" \
-            "$expected_dir/ex_${number}.txt" > /dev/null
+    # Compare output terminals with expected output terminals
+    txtPass=true
+    if diff "$outputDir/op_${number}.txt" \
+            "$expectedDir/ex_${number}.txt" > /dev/null
     then
+    # If the terminals are the same, then the test passed
         echo "Terminal: PASS"
     else
+    # Else, the terminals are not the same, meaning the test failed
         echo "Terminal: FAIL"
-        txt_pass=false
+        # Set txtPass to false if the test failed
+        txtPass=false
     fi
 
-    atf_pass=true
-    if diff "$output_dir/op_${number}.atf" \
-            "$expected_dir/ex_${number}.etf" > /dev/null
+    # Compare output transaction files with expected transaction files
+    atfPass=true
+    if diff "$outputDir/op_${number}.atf" \
+            "$expectedDir/ex_${number}.etf" > /dev/null
     then
+    # If the transaction files are the same, then the test passed
         echo "Transaction File: PASS"
     else
+    # Else, the transaction files are not the same, meaning the test failed
         echo "Transaction File: FAIL"
-        atf_pass=false
+        # Set atfPass to false if the test failed
+        atfPass=false
     fi
 
-    if $txt_pass && $atf_pass
+    # If both txtPass and atfPass are true, then the whole test passed
+    if $txtPass && $atfPass
     then
-        ((passed_tests++))
+        # Increase numnber of passed tests by one if the whole test passed
+        ((passedTests++))
     fi
 
     echo ""
 done
 
-echo "Passed tests: $passed_tests"
-echo "Failed tests: $((total_tests - passed_tests))"
+# Print summary of test results
+echo "Passed tests: $passedTests"
+echo "Failed tests: $((total_tests - passedTests))"
 echo "Total tests:  $total_tests"
