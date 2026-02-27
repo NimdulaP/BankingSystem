@@ -1,11 +1,10 @@
 # from utils import errorMessage
-
+import os
 
 class Transactions:
 
-    def __init__(self, transaction_file):
-        self.transaction_file = transaction_file
-
+    def __init__(self, transaction_file=None):
+        self.transaction_file = self.create_new_session_file("daily_transactions")
 
     # ==============================
     # FORMATTER FUNCTION (40 chars)
@@ -46,7 +45,27 @@ class Transactions:
         # excluding the spaces, or if the field widths were meant to be smaller.
         
         # print(f"Formatted transaction line: '{line}' (length: {len(line)})")
-        self.transaction_file.write(line + "\n")
+        # self.transaction_file.write(line + "\n")
+        self.append_to_session_file(line)
+
+    # File handling functions
+    def create_new_session_file(self, base_filename):
+        i = 0
+        filename = os.path.join("daily_transactions", f"{base_filename}.txt")
+
+        while os.path.exists(filename):
+            i += 1
+            filename = os.path.join("daily_transactions", f"{base_filename}_{i}.txt") 
+
+        # Create the file once per run
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write("")  # empty file to start session
+
+        return filename
+
+    def append_to_session_file(self, transaction):
+        with open(self.transaction_file, "a", encoding="utf-8") as f:
+            f.write(transaction + "\n")
 
 
     # ==============================
