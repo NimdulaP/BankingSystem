@@ -1,2 +1,31 @@
-03 john_doe____________ 00001 00050.00 EC
-00 END_OF_SESSION       00000 00000.00 00
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Please enter your name or 'back' to return to main menu:
+Logged In: john doe
+
+Enter the number of the option you want to proceed with
+1. Withdrawal
+2. Transfer
+3. Paybill
+4. Deposit
+5. Logout
+
+Your choice: PAYBILL
+Please enter the account number you want to pay from:
+Please enter the amount you want to pay:
+Enter biller code (EC, CQ, FI):
+You are paying $50 from john doe's account 1 to biller EC
+
+Logged In: john doe
+
+Enter the number of the option you want to proceed with
+1. Withdrawal
+2. Transfer
+3. Paybill
+4. Deposit
+5. Logout
+
+Your choice: LOGOUT
+Logging out...
+
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Exiting program.

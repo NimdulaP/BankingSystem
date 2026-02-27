@@ -1,1 +1,18 @@
-00 END_OF_SESSION       00000 00000.00 00
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: 
+Enter the number of the option you want to proceed with
+1. Withdrawal
+2. Transfer
+3. Paybill
+4. Deposit
+5. Create Account
+6. Delete Account
+7. Disable Account
+8. Changeplan
+9. Logout
+
+Your choice: LOGOUT
+Logging out...
+
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Exiting program.

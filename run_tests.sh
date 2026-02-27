@@ -21,7 +21,7 @@ for file in inputs/in*.txt
 do
     base=$(basename "$file" .txt)   # e.g. in01
     number=${base:2}                # remove first 2 chars → 01
-    name="op${number}"              # → op01
+    name="ex${number}"              # → op01
 
     echo "Running test $base"
 
