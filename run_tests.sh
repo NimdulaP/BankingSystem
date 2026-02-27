@@ -20,10 +20,10 @@ rm -f outputs/*
 for file in inputs/in*.txt
 do
     base=$(basename "$file" .txt)   # e.g. in01
-    number=${base:2}                # remove first 2 chars → 01
-    name="op${number}"              # → op01
+    number=${base:3}                # remove first 2 chars → 01
+    name="op_$number"              # → op01
 
-    echo "Running test $base"
+    echo "Running Test #$number"
 
     grep -v '^#' "$file" | python3 main.py currentaccounts.txt \
 > "outputs/${name}.txt"
