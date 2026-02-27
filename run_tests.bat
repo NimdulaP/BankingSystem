@@ -18,10 +18,11 @@ for %%f in (inputs\in*.txt) do (
     mkdir daily_transactions
 
     REM Run program and save terminal outputs
-    python main.py < %%f > outputs\op!number!.txt
+    REM Skip the first line of the input file (comment line)
+    more +1 "%%f" | python main.py currentaccounts.txt > "outputs\op!number!.txt"
 
     REM Copy generated transaction file
     for %%t in (daily_transactions\*.txt) do (
-        copy %%t outputs\op!number!.atf > nul
+        copy %%t "outputs\op!number!.atf" > nul
     )
 )
