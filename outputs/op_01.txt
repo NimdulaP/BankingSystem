@@ -1,0 +1,7 @@
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Please enter your name or 'back' to return to main menu:
+Account name not found. Please try again.
+
+Please enter your name or 'back' to return to main menu:
+Welcome to the Banking System
+Enter session type (admin / standard) or 'quit' to end program: Exiting program.

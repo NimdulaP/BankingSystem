@@ -37,7 +37,7 @@ class Transactions:
 
         # Assemble with the required spaces between each field
         # CC + space + Name + space + Acc + space + Amount + space + Misc
-        line = f"{code_field}_{name_field}_{acc_field}_{amount_field}{misc_field}"
+        line = f"{code_field}_{name_field}_{acc_field}_{amount_field}_{misc_field}"
         
         # Verify length: 2 + 1 + 20 + 1 + 5 + 1 + 8 + 1 + 2 = 41 characters total
         # (The spec says 40 chars, but the field breakdown including spaces totals 41)
