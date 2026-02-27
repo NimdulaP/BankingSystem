@@ -3,8 +3,8 @@ import os
 
 class Transactions:
 
-    def __init__(self, transaction_file=None):
-        self.transaction_file = self.create_new_session_file("daily_transactions")
+    def __init__(self):
+        self.transaction_file = self.create_new_session_file("daily_transactions_")
 
     # ==============================
     # FORMATTER FUNCTION (40 chars)
@@ -16,7 +16,7 @@ class Transactions:
 
         if code == 0:
             # End-of-session
-            name_field = "END_OF_SESSION".ljust(20)
+            name_field = "END_OF_SESSION".ljust(20, "_")
             acc_field = "00000"
             amount_field = "00000.00"
             misc_field = "00"
@@ -37,7 +37,7 @@ class Transactions:
 
         # Assemble with the required spaces between each field
         # CC + space + Name + space + Acc + space + Amount + space + Misc
-        line = f"{code_field} {name_field} {acc_field} {amount_field} {misc_field}"
+        line = f"{code_field}_{name_field}_{acc_field}_{amount_field}{misc_field}"
         
         # Verify length: 2 + 1 + 20 + 1 + 5 + 1 + 8 + 1 + 2 = 41 characters total
         # (The spec says 40 chars, but the field breakdown including spaces totals 41)
@@ -50,12 +50,12 @@ class Transactions:
 
     # File handling functions
     def create_new_session_file(self, base_filename):
-        i = 0
-        filename = os.path.join("daily_transactions", f"{base_filename}.txt")
+        i = 1
+        filename = os.path.join("daily_transactions", f"{base_filename}{i}.txt")
 
         while os.path.exists(filename):
             i += 1
-            filename = os.path.join("daily_transactions", f"{base_filename}_{i}.txt") 
+            filename = os.path.join("daily_transactions", f"{base_filename}{i}.txt") 
 
         # Create the file once per run
         with open(filename, "w", encoding="utf-8") as f:

@@ -5,17 +5,12 @@ from account import Account
 
 
 class Main:
-    def __init__(self, accounts_file, transaction_file):
+    def __init__(self, accounts_file):
         self.accounts_file = accounts_file
-        self.transaction_file = transaction_file
         self.account = Account(accounts_file)
+        self.menu = Menu()
 
     def start(self):
-
-        # Open transaction file (writes fresh file each run)
-        with open(self.transaction_file, "w") as trans_file:
-
-            menu = Menu(trans_file)
 
             while True:
                 print("Welcome to the Banking System")
@@ -24,7 +19,7 @@ class Main:
                 ).strip().lower()
 
                 if loginType == "admin":
-                    menu.run(loginType)
+                    self.menu.run(loginType)
 
                 elif loginType == "standard":
                     name = input(
@@ -43,7 +38,7 @@ class Main:
                                 "Please enter your name or 'back' to return to main menu:\n"
                             )
                         else:
-                            menu.run(loginType, name)
+                            self.menu.run(loginType, name)
                             break
 
                 elif loginType == "quit":
@@ -55,13 +50,7 @@ class Main:
 
 
 if __name__ == "__main__":
+    accounts_file = "currentaccounts.txt"
 
-    if len(sys.argv) != 3:
-        print("Usage: python3 main.py currentaccounts.txt transout.txt")
-        sys.exit(1)
-
-    accounts_file = sys.argv[1]
-    transaction_file = sys.argv[2]
-
-    app = Main(accounts_file, transaction_file)
+    app = Main(accounts_file)
     app.start()

@@ -4,9 +4,9 @@ from transactions import Transactions
 
 # Menu class to list options and run transactions
 class Menu:
-    def __init__(self, transaction_file):
-        self.operations = Transactions(transaction_file)
+    def __init__(self):
 
+        self.operations = Transactions()
         self.menu = {
             1: ("Withdrawal", self.operations.withdrawal),
             2: ("Transfer", self.operations.transfer),
