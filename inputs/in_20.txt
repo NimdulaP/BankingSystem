@@ -1,0 +1,3 @@
+# Delete: trying to access delete account w/o being logged in
+6
+quit

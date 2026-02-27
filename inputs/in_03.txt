@@ -1,0 +1,4 @@
+# Login: valid admin
+admin
+9
+quit

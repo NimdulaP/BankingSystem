@@ -1,0 +1,8 @@
+# Withdrawl: valid standard
+standard
+john doe
+1
+1
+50
+5
+quit

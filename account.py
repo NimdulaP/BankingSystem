@@ -1,38 +1,78 @@
-# Account class for account related functions
+# account.py
 class Account:
+    def __init__(self, accounts_file):
+        self.accounts_file = accounts_file
 
-    # Find account name functions
     def findAccountName(self, name):
-        # Removing spaces from the name for comparison
-        username = name.replace(" ", "")
+        username_clean = name.replace(" ", "").lower()
 
-        # Try catch to read accounts.txt file
         try:
-            # While accounts.txt file is open, read each line one by one
-            with open("accounts.txt", "r") as file:
+            with open(self.accounts_file, "r") as file:
                 for line in file:
-                    # Removing leading/trailing whitespace from the line
-                    line = line.strip()
-
-                    # Skipping empty lines
+                    line = line.rstrip("\n")
                     if not line:
                         continue
 
-                    # Dividing account information
-                    parts = line.split("_")
-                    # Getting name section
-                    name_section = "_".join(parts[1:-2])
-                    # Removing underscores from name section
-                    actual_name = name_section.rstrip("_")
+                    # Split the line by spaces
+                    parts = line.split()
 
-                    # Checking if actual name matches the username (case insensitive)
-                    if actual_name.lower() == username.lower():
+                    # parts[0] = account number
+                    # parts[1] = name with underscores
+                    # parts[2] = status
+                    # parts[3] = balance
+                    raw_name = parts[1]
+
+                    # Clean underscores and lowercase
+                    actual_name_clean = raw_name.replace("_", "").lower()
+
+                    # print(f"DEBUG: Checking '{actual_name_clean}' against '{username_clean}'")
+
+                    if actual_name_clean == username_clean:
+                        # print("DEBUG: Match found!")
                         return True
-                    
-                # If no name matches, return false
-                return False
-            
-        # Throws errors if accounts.txt file is not found
-        except FileNotFoundError:
-            print("accounts.txt not found.")
+
+            # print("DEBUG: No match found")
             return False
+
+        except FileNotFoundError:
+            print(f"{self.accounts_file} not found.")
+            return False
+
+# # Account class for account related functions
+# class Account:
+
+#     # Find account name functions
+#     def findAccountName(self, name):
+#         # Removing spaces from the name for comparison
+#         username = name.replace(" ", "")
+
+#         # Try catch to read accounts.txt file
+#         try:
+#             # While accounts.txt file is open, read each line one by one
+#             with open("accounts.txt", "r") as file:
+#                 for line in file:
+#                     # Removing leading/trailing whitespace from the line
+#                     line = line.strip()
+
+#                     # Skipping empty lines
+#                     if not line:
+#                         continue
+
+#                     # Dividing account information
+#                     parts = line.split("_")
+#                     # Getting name section
+#                     name_section = "_".join(parts[1:-2])
+#                     # Removing underscores from name section
+#                     actual_name = name_section.rstrip("_")
+
+#                     # Checking if actual name matches the username (case insensitive)
+#                     if actual_name.lower() == username.lower():
+#                         return True
+                    
+#                 # If no name matches, return false
+#                 return False
+            
+#         # Throws errors if accounts.txt file is not found
+#         except FileNotFoundError:
+#             print("accounts.txt not found.")
+#             return False

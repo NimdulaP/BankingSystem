@@ -1,0 +1,7 @@
+# Delete: valid admin
+admin
+6
+john doe
+1
+9
+quit

@@ -1,0 +1,5 @@
+# Login: valid standard account name
+standard
+john doe
+5
+quit

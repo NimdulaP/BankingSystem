@@ -1,0 +1,7 @@
+# Disable: valid admin
+admin
+7
+john doe
+1
+9
+quit

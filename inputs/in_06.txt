@@ -1,0 +1,8 @@
+# Withdrawl: valid admin
+admin
+1
+john doe
+1
+50
+9
+quit

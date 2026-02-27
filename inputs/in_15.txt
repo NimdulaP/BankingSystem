@@ -1,0 +1,8 @@
+# Deposit: valid admin
+admin
+4
+john doe
+1
+50
+9
+quit

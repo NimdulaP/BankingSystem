@@ -1,0 +1,6 @@
+# Disable: trying to access disable an account as a standard user
+standard
+john doe
+7
+5
+quit

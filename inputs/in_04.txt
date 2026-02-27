@@ -1,0 +1,4 @@
+# Logout: valid logout
+admin
+9
+quit

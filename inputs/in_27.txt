@@ -1,0 +1,6 @@
+# Changeplan: trying to change a plan of an account as a standard user
+standard
+john doe
+8
+5
+quit

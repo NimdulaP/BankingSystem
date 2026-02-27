@@ -1,0 +1,6 @@
+# Delete: trying to access delete account as a standard user
+standard
+john doe
+6
+5
+quit

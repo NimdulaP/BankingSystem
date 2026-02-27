@@ -1,0 +1,9 @@
+# Paybill: valid admin
+admin
+3
+john doe
+1
+50
+EC
+9
+quit

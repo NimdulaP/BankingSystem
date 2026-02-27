@@ -1,0 +1,7 @@
+# Changeplan: valid admin
+admin
+8
+john doe
+1
+9
+quit

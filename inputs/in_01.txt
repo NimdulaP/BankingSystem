@@ -1,0 +1,5 @@
+# Login: invalid standard account name
+standard
+wrong user
+back
+quit

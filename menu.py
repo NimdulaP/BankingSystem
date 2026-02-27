@@ -1,12 +1,12 @@
 # Importing classes and functions
 from transactions import Transactions
-from utils import errorMessage, title, bcolors
+# from utils import errorMessage, title, bcolors
 
 # Menu class to list options and run transactions
 class Menu:
-    def __init__(self):
-        # Initizalizing transaction and menu variable
-        self.operations = Transactions()
+    def __init__(self, transaction_file):
+        self.operations = Transactions(transaction_file)
+
         self.menu = {
             1: ("Withdrawal", self.operations.withdrawal),
             2: ("Transfer", self.operations.transfer),
@@ -19,9 +19,9 @@ class Menu:
             9: ("Logout", self.logout)
         }
 
-    # Logout function
     def logout(self):
         print("Logging out...\n")
+        self.operations.write_transaction(0)   # END OF SESSION
 
     # Display and run transactions function
     def run(self, loginType, name=None):
@@ -32,7 +32,7 @@ class Menu:
 
             # Displaying username (if given)
             if name is not None:
-                print("Logged In: " + bcolors.OKGREEN + name + bcolors.ENDC)
+                print("Logged In: " + name)
 
             # Creating the list of allowed options
             displayMap = {}
@@ -60,7 +60,7 @@ class Menu:
                     displayNum += 1
             else:
                 # Displaying error message for session types not standard nor admin
-                errorMessage("Invalid session type.")
+                print("Invalid session type.")
 
             # Try catch to get only valid options
             try:
@@ -69,7 +69,7 @@ class Menu:
                 if choice in displayMap:
                     # If the option is valid and allowed, run the transaction
                     actualOption = displayMap[choice]
-                    title((self.menu[actualOption][0]).upper())
+                    print((self.menu[actualOption][0]).upper())
                     # Logging out if the user selects logout transaction
                     if actualOption == 9:
                         loggedOut = True
@@ -81,7 +81,7 @@ class Menu:
                         self.menu[actualOption][1](loginType, name)
                 else:
                     # Displaying error message if option selected isn't listed
-                    errorMessage("Invalid option.")
+                    print("Invalid option.")
             except ValueError:
                 # Displaying error message if user's input isn't a number
                 print("Please enter a number.")

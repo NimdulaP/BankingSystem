@@ -1,0 +1,9 @@
+# Transfer: valid admin
+admin
+2
+john doe
+1
+2
+50
+9
+quit

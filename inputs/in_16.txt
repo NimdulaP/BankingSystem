@@ -1,0 +1,8 @@
+# Deposit: valid standard
+standard
+john doe
+4
+1
+50
+5
+quit

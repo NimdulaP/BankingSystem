@@ -1,0 +1,9 @@
+# Transfer: valid standard
+standard
+john doe
+2
+1
+2
+50
+5
+quit

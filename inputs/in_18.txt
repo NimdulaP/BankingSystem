@@ -1,0 +1,6 @@
+# Create: trying to access create account as a standard user
+standard
+john doe
+5
+jane doe
+quit

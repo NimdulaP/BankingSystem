@@ -1,0 +1,9 @@
+# Paybill: valid standard
+standard
+john doe
+3
+1
+50
+EC
+5
+quit
