@@ -2,7 +2,7 @@
 class Account:
 
     # Find account name functions
-    def findAccountName(self, name):
+    def find_account_name(self, name):
         # Removing spaces from the name for comparison and lowering the case
         username = name.replace(" ", "").lower()
 

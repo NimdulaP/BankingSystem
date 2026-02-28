@@ -11,9 +11,9 @@ class Menu:
             2: ("Transfer", self.operations.transfer),
             3: ("Paybill", self.operations.paybill),
             4: ("Deposit", self.operations.deposit),
-            5: ("Create Account", self.operations.createAccount),
-            6: ("Delete Account", self.operations.deleteAccount),
-            7: ("Disable Account", self.operations.disableAccount),
+            5: ("Create Account", self.operations.create_account),
+            6: ("Delete Account", self.operations.delete_account),
+            7: ("Disable Account", self.operations.disable_account),
             8: ("Changeplan", self.operations.changeplan),
             9: ("Logout", self.logout)
         }

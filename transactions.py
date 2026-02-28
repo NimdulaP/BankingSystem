@@ -116,47 +116,48 @@ class Transactions:
         self.write_transaction(4, name, accountNumber, amount)
 
     # Admin-only functions
-    def createAccount(self, loginType):
+    def create_account(self, loginType):
         # Checking if user is admin
         if loginType != "admin":
             print("You do not have permission to create an account.\n")
             return
         # Getting account holder name, account number and initial balance
         name = input("Please enter the account holder's name:\n")
-        acc = input("Please enter the account number you want to create:\n")
+        accountNumber = input("Please enter the account number you want to create:\n")
         balance = input("Please enter the initial balance:\n")
         # Displaying account creation information
-        print(f"You are creating an account for {name} with account number {acc} and balance ${balance}\n")
+        print(f"You are creating an account for {name} with account number {accountNumber} and balance ${balance}\n")
         # Writing transaction to file
-        self.write_transaction(5, name, acc, balance)
+        self.write_transaction(5, name, accountNumber, balance)
 
 
-    def deleteAccount(self, loginType):
+    def delete_account(self, loginType):
         # Checking if user is admin 
         if loginType != "admin":
             print("You do not have permission.\n")
             return
         # Getting account holder name and account number    
         name = input("Please enter the account holder's name:\n")
-        acc = input("Please enter the account number you want to delete:\n")
+        accountNumber = input("Please enter the account number you want to delete:\n")
         # Displaying deleted account information
-        print(f"You have deleted {name}'s account {acc}\n")
+        print(f"You have deleted {name}'s account {accountNumber}\n")
         # Writing transaction to file
-        self.write_transaction(6, name, acc, "0")
+        self.write_transaction(6, name, accountNumber, "0")
 
 
-    def disableAccount(self, loginType):
+    def disable_account(self, loginType):
         # Checking if user is admin 
         if loginType != "admin":
             print("You do not have permission.\n")
             return
         # Getting account holder name and account number
         name = input("Please enter the account holder's name:\n")
-        acc = input("Please enter the account number you want to disable:\n")
+        accountNumber = input("Please enter the account number you want to disable:\n")
         # Displaying disabled account information
-        print(f"You have disabled {name}'s account {acc}\n")
+        print(f"You have disabled {name}'s account {accountNumber}\n")
         # Writing transaction to file   
-        self.write_transaction(7, name, acc, "0")
+        self.write_transaction(7, name, accountNumber, "0")
+
 
 
     def changeplan(self, loginType):
@@ -166,8 +167,8 @@ class Transactions:
             return
         # Getting account holder name and account number
         name = input("Please enter the account holder's name:\n")
-        acc = input("Please enter the account number:\n")
+        accountNumber = input("Please enter the account number:\n")
         # Displaying changed plan information
-        print(f"You changed {name}'s account {acc} plan\n")
+        print(f"You changed {name}'s account {accountNumber} plan\n")
         # Writing transaction to file
-        self.write_transaction(8, name, acc, "0")
+        self.write_transaction(8, name, accountNumber, "0")

@@ -59,5 +59,5 @@ done
 
 # Print summary of test results
 echo "Passed tests: $passedTests"
-echo "Failed tests: $((total_tests - passedTests))"
-echo "Total tests:  $total_tests"
+echo "Failed tests: $((totalTests - passedTests))"
+echo "Total tests:  $totalTests"
