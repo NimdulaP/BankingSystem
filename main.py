@@ -36,7 +36,7 @@
 # Execute the Application using Python 3:
 #     python3 main.py
 # Follow the prompts to log in as 'admin' or 'standard', perform transactions, 
-#  and logout to save the session's transactions.
+# and logout to save the session's transactions.
 
 from menu import Menu
 from account import Account

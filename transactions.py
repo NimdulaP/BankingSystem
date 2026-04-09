@@ -70,6 +70,8 @@ class Transactions:
         self.write_transaction(1, name, accountNumber, amount)
 
     # Transfer function
+    # TODO: FIX DAILY TRANSACTIONS FILE TO WRITE TWO TRANSACTIONS FOR TRANSFER (ONE FOR WITHDRAWAL, ONE FOR DEPOSIT)
+    # TODO: UPDATE TESTING
     def transfer(self, loginType, name=None):
         # Getting account name if user is admin
         if loginType == "admin":
